@@ -1,172 +1,93 @@
-# SPRINT 0: PLANNING (SETUP)
-
-### 1. Product Vision (1–2 Sentences)
-
-The vision of this prototype is to build an automated Data Engineering ETL
-pipeline that extracts raw dataset files, cleans and transforms the data, 
-and loads the processed data into a structured database with automated testing and CI/CD integration.
-The solution will demonstrate iterative Agile development and DevOps practices 
-through version control, automated testing, and continuous integration.
-
-
-
-### 2. Product Backlog (User Stories)
-
-(All written in proper Agile format: As a [user], I want [feature], so that [value])
-
-- User Story 1
-
-    As a data engineer, I want to ingest a raw CSV dataset so that the pipeline can process real-world data.
-
-- User Story 2
-
-    As a data engineer, I want to clean and transform the dataset so that the data becomes accurate and usable for analysis.
-
-- User Story 3
-
-    As a data engineer, I want to load the processed data into a database so that it can be stored and queried efficiently.
-
-- User Story 4
-
-    As a developer, I want automated tests for the pipeline so that I can ensure data quality and pipeline reliability.
-
-- User Story 5
-
-    As a DevOps practitioner, I want a CI/CD pipeline configured so that tests run automatically on every commit.
-
-- User Story 6
-
-    As a user, I want logging in the pipeline so that errors and processing steps can be monitored.
-
-
-
-### 3. Refined Backlog (Acceptance Criteria, Priority & Estimates)
-(Using Agile best practice: Priority + Story Points)
-
-#### Priority Order: High → Medium → Low
-
-##### User Story 1: Data Ingestion Pipeline
-
-Acceptance Criteria:
-
-- The system can read a raw CSV dataset successfully
-
-- The dataset is loaded without errors
-
-- File path handling is configurable
-
-Priority: High
-Story Points: 3
-
-
-##### User Story 2: Data Cleaning & Transformation
-
-Acceptance Criteria:
-
-- Missing values are handled (removed or filled)
-
-- Column formats are standardized
-
-- Duplicate records are removed
-
-- Clean dataset is saved as a new file
-
-Priority: High
-Story Points: 5
-
-
-##### User Story 3: Load Data into Database (ETL Completion)
-
-Acceptance Criteria:
-
-- Clean data is stored in PostgreSQL
-
-- Table is created automatically if it does not exist
-
-- Data can be queried successfully from the database
-
-Priority: High
-Story Points: 5
-
-
-##### User Story 4: Automated Testing (Data Validation Tests)
-
-Acceptance Criteria:
-
-- Unit tests exist for pipeline functions
-
-- Tests validate data ingestion and transformation
-
-- All tests pass in local environment
-
-Priority: Medium
-Story Points: 3
-
-
-##### User Story 5: CI/CD Pipeline Configuration (DevOps)
-
-Acceptance Criteria:
-
-- GitHub Actions workflow file (main.yml) is created
-
-- Pipeline runs automatically on push
-
-- Tests execute successfully in CI environment
-
-- Failed tests stop the pipeline
-
-Priority: Medium
-Story Points: 5
-
-
-##### User Story 6: Pipeline Logging & Monitoring
-
-Acceptance Criteria:
-
-- Logs show extraction, transformation, and loading steps
-
-- Errors are recorded in log file
-
-- Logs are readable and structured
-
-Priority: Low
-Story Points: 2
-
-
-
-### 4. Definition of Done (DoD) – Agile + DevOps Standard
-
-A user story will be considered “Done” only when:
-
-- Code is implemented and pushed to GitHub repository
-
-- Feature meets all acceptance criteria
-
+# Sprint 0: Planning (Setup)
+
+## Product Vision
+The vision of this project is to develop an automated ETL (Extract, Transform, Load) data pipeline that processes the Flight_Price_Dataset_of_Bangladesh.csv by extracting, cleaning, transforming, and loading the data into a structured database while applying Agile and DevOps practices such as CI/CD, testing, and logging.
+
+---
+
+## Project Type
+Data Engineering Prototype – Automated ETL Pipeline with CI/CD, Testing, and Monitoring.
+
+---
+
+## Product Backlog (User Stories, Priority & Estimates)
+
+| ID | User Story | Priority | Story Points |
+|----|------------|----------|--------------|
+| US1 | As a data engineer, I want to extract the raw flight dataset so the pipeline can process real data | High | 3 |
+| US2 | As a data engineer, I want to clean and transform the dataset to improve data quality | High | 5 |
+| US3 | As a data engineer, I want to load cleaned data into a database for storage and querying | High | 5 |
+| US4 | As a developer, I want automated tests to ensure pipeline reliability | Medium | 3 |
+| US5 | As a DevOps practitioner, I want a CI/CD pipeline to automate testing on each commit | Medium | 5 |
+| US6 | As a user, I want logging and monitoring to track pipeline execution | Low | 2 |
+
+---
+
+## Refined Backlog
+
+### US1: Data Extraction
+- System reads CSV dataset successfully
+- Dataset loads without runtime errors
+- File path is configurable
+
+### US2: Data Transformation
+- Missing values handled
+- Duplicate records removed
+- Column names standardized
+- Clean dataset generated
+
+### US3: Data Loading
+- Clean data stored in SQLite database
+- Table created automatically if not existing
+- Data can be queried from database
+
+### US4: Automated Testing
+- Unit tests implemented using pytest
+- Tests validate extract and transform functions
+- Tests run successfully in CI pipeline
+
+### US5: CI/CD Pipeline
+- GitHub Actions workflow configured
+- Pipeline runs on push and pull request
+- Tests executed automatically
+- Pipeline fails if tests fail
+
+### US6: Logging & Monitoring
+- Pipeline logs saved to pipeline.log
+- Errors captured in logs
+- Execution stages logged with timestamps
+
+---
+
+## Definition of Done (DoD)
+A backlog item is considered Done when:
+- Code is implemented and pushed to GitHub
+- Acceptance criteria are satisfied
 - Unit tests are written and passing
-
-- CI/CD pipeline runs successfully without errors
-
-- Code follows clean structure and documentation standards
-
+- CI/CD pipeline runs successfully (green build)
+- Logging and documentation are updated
 - No critical bugs remain
+- Commit history shows incremental development (no big-bang commits)
 
-- Commit history shows incremental development (not one big commit)
+---
 
-- Relevant logs or outputs are generated for verification
+## Sprint 1 Plan (Selected Backlog Items)
+Selected Stories:
+- US1: Data Extraction (3 SP)
+- US2: Data Transformation (5 SP)
+- US4: Automated Testing (3 SP)
 
+### Sprint Goal
+Deliver a working ETL pipeline capable of extracting and transforming the flight dataset with automated testing and CI integration.
 
+---
 
-### 5. Sprint 1 Plan (Selected Stories)
-Sprint Goal:
-
-Deliver a basic working ETL pipeline with data ingestion and transformation.
-
-Selected User Stories for Sprint 1 (2–3 Stories)
-
-- User Story 1 – Data Ingestion Pipeline (3 SP)
-
-- User Story 2 – Data Cleaning & Transformation (5 SP)
-
-- User Story 4 – Automated Testing (3 SP)
-
-Total Story Points: 11 SP (Reasonable for a small prototype sprint)
+## System Architecture (Mermaid Diagram)
+```mermaid
+flowchart LR
+    A[Raw Flight Dataset CSV] --> B[Extract Module]
+    B --> C[Transform Module]
+    C --> D[Cleaned Dataset Output]
+    C --> E[SQLite Database]
+    B --> F[Unit Tests]
+    F --> G[CI/CD Pipeline - GitHub Actions]
