@@ -2,8 +2,10 @@ import pandas as pd
 from src.extract import extract_data
 from src.transform import clean_data
 from src.load import load_to_database
-import os
+import os, sys
 
+# Add project root to Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 def test_extract_data():
     df = extract_data("raw_bangladesh_data/Flight_Price_Dataset_of_Bangladesh.csv")
