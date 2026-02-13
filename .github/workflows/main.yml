@@ -30,7 +30,7 @@ jobs:
         # Run the ETL pipeline to generate pipeline.log
       - name: Run ETL Pipeline
         run: |
-          python src/pipeline.py
+          python -m src.pipeline
 
       # Upload pipeline.log as CI artifact (Monitoring Evidence)
       - name: Upload Pipeline Log Artifact
